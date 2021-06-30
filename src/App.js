@@ -69,7 +69,6 @@ export default class App extends Component {
         view: `${type}_${prevState[type].length}`,
       }),
       () => {
-        console.log(this.state);
         this.readyToRender();
       }
     );
@@ -85,56 +84,42 @@ export default class App extends Component {
         return { [type]: newProp, view: `${type}_${id - 1}` };
       },
       () => {
-        console.log(this.state);
         this.readyToRender();
       }
     );
   }
   readyToRender() {
-    // for (const value of Object.values(this.state)) {
-    //   if (typeof value === "string") {
-    //     continue;
-    //   }
-    //   for (const subValue of Object.values(value)) {
-    //     if (!subValue) {
-    //       return;
-    //     }
-    //   }
-    // }
-    // this.setState({ isComplete: true });
-    for (const value of Object.values(this.state)) {
-      console.log({ value });
-      if (typeof value === "string" || typeof value === "boolean") {
-        // 'view' or 'isComplete' properties
+    const aboutValues = Object.values(this.state.about);
+    if (aboutValues.some((subValue) => !subValue)) {
+      // empty about subvalue
+      this.state.isComplete &&
+        this.setState({ isComplete: false }, () => console.log(this.state));
+      return;
+    }
+    for (const prop of Object.values(this.state)) {
+      if (!Array.isArray(prop)) {
+        // is not 'education' or 'experience' (array properties)
         continue;
-      } else if (typeof value === "object") {
-        // 'about'
-        for (const subValue of Object.values(value)) {
-          console.log({ subValue });
-          // if (!subValue) {
-          //   return;
-          // }
-        }
-      } else if (value.isArray()) {
-        // experience or education array
-        if (
-          !value.every((item) => {
-            for (const arraySubValue of Object.values(item)) {
-              console.log({ arraySubValue });
-              if (!arraySubValue) {
-                return false;
-              }
-            }
+      }
+      // 'education' or 'experience'
+      if (
+        prop.some((item) => {
+          if (Object.values(item).some((subValue) => !subValue)) {
+            // empty array item subvalue
             return true;
-          })
-        ) {
-          // Array.prototype.every returns false
-          return;
-        }
+          }
+          return false;
+        })
+      ) {
+        // array item with empty value
+        this.state.isComplete &&
+          this.setState({ isComplete: false }, () => console.log(this.state));
+        return;
       }
     }
-    // everything complete (theoretically)
-    console.log("READY TO RENDER");
+    // all fields are filled
+    !this.state.isComplete &&
+      this.setState({ isComplete: true }, () => console.log(this.state));
   }
   updateState(value, prop, subProp, index = null) {
     const newState = { ...this.state };
@@ -144,7 +129,6 @@ export default class App extends Component {
       newState[prop][index][subProp] = value;
     }
     this.setState(newState, () => {
-      console.log(this.state);
       this.readyToRender();
     });
   }
@@ -181,7 +165,7 @@ export default class App extends Component {
             />
           )}
         </main>
-        {this.readyToRender() && (
+        {this.state.isComplete && (
           <button
             onClick={(e) => {
               e.preventDefault();
