@@ -1,7 +1,7 @@
 import "./styles/App.css";
 import React, { Component } from "react";
 import Sidebar from "./components/Sidebar";
-import Render from "./components/Render";
+import RenderCV from "./components/RenderCV";
 import Form from "./components/Form";
 
 export default class App extends Component {
@@ -13,6 +13,7 @@ export default class App extends Component {
     this.updateState = this.updateState.bind(this);
     this.changeView = this.changeView.bind(this);
     this.getPropLength = this.getPropLength.bind(this);
+    this.getHeaders = this.getHeaders.bind(this);
     this.state = {
       about: {
         fullName: "",
@@ -138,25 +139,43 @@ export default class App extends Component {
   getPropLength(prop) {
     return this.state[prop].length;
   }
+  getHeaders() {
+    return {
+      experience: this.state.experience.map((item) => ({
+        establishment: item.establishment,
+        id: item.id,
+      })),
+      education: this.state.education.map((item) => ({
+        institution: item.institution,
+        id: item.id,
+      })),
+    };
+  }
   render() {
     const { view } = this.state;
     let stateProp;
     if (view === "about") {
       stateProp = this.state.about;
-    } else {
+    } else if (view !== "render") {
+      // CHECK ABOVE!!
       const [viewType, viewNo] = view.split("_");
       stateProp = this.state[viewType].find((item) => item.id === viewNo);
     }
     return (
       <div className="App">
-        <Sidebar />
+        <Sidebar
+          isComplete={this.state.isComplete}
+          getHeaders={this.getHeaders}
+          changeView={this.changeView}
+          view={view}
+        />
         <main>
           {view === "render" ? (
-            <Render />
+            <RenderCV />
           ) : (
             <Form
               obj={stateProp}
-              view={this.state.view}
+              view={view}
               updateState={this.updateState}
               changeView={this.changeView}
               addItem={this.addItem}
@@ -165,16 +184,6 @@ export default class App extends Component {
             />
           )}
         </main>
-        {this.state.isComplete && (
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              this.setState({ view: "render" });
-            }}
-          >
-            Render CV
-          </button>
-        )}
       </div>
     );
   }
