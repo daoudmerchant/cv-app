@@ -1,0 +1,32 @@
+.buttonContainer {
+  background-color: salmon;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.buttonContainer button {
+  outline: none;
+  cursor: pointer;
+  border: 2px solid blue;
+  border-radius: 20px;
+  color: blue;
+  font-size: larger;
+  padding: 1.5rem;
+  background-color: inherit;
+  margin: auto 3rem;
+}
+
+.backbutton:first-child {
+  margin-right: auto;
+}
+
+button:only-child {
+  align-content: flex-start;
+  color: green;
+}
+
+button:hover {
+  background-color: blue;
+  color: white;
+}

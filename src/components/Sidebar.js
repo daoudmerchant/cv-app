@@ -1,7 +1,8 @@
 import React from "react";
+import "../styles/Sidebar.css";
 
 export default function Sidebar(props) {
-  const { isComplete, changeView, getHeaders, view } = props;
+  const { isComplete, changeView, getHeaders, view, getPropLength } = props;
   const { experience, education } = getHeaders();
   const ExperienceList = experience.map((item) => (
     <li key={item.id}>
@@ -15,19 +16,35 @@ export default function Sidebar(props) {
   ));
   let RenderButton;
   if (!isComplete) {
-    RenderButton = <p>Please complete form</p>;
+    RenderButton = (
+      <div className="cannotrender">
+        <p>Please complete form</p>
+      </div>
+    );
   } else {
     if (view === "render") {
-      RenderButton = <button>Edit CV</button>;
+      RenderButton = (
+        <div className="canrender">
+          <button
+            onClick={() =>
+              changeView(`education_${getPropLength("education") - 1}`)
+            }
+          >
+            Edit CV
+          </button>
+        </div>
+      );
     } else {
       RenderButton = (
-        <button onClick={() => changeView("render")}>Render CV</button>
+        <div className="canrender">
+          <button onClick={() => changeView("render")}>Render CV</button>
+        </div>
       );
     }
   }
   return (
-    <div>
-      <ul>
+    <div className="sidebar">
+      <ul className="formlist">
         <li>About Me</li>
         <li>
           Experience

@@ -1,4 +1,12 @@
 .App {
   display: grid;
   grid-template-columns: 20vw 1fr;
+  height: 100%;
+}
+
+.App .sidebar,
+.App form {
+  display: grid;
+  grid-template-rows: 1fr 200px;
+  grid-template-columns: 1fr;
 }

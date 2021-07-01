@@ -1,0 +1,39 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: crimson;
+}
+
+.formlist {
+  background-color: cadetblue;
+  display: block;
+  margin: 10%;
+  font-weight: bold;
+}
+
+li ul {
+  font-weight: normal;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  margin: 1rem;
+}
+
+.canrender,
+.cannotrender {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: burlywood;
+}
+
+.canrender button {
+  width: 100%;
+  height: 100%;
+  font-size: 2rem;
+}

@@ -168,6 +168,7 @@ export default class App extends Component {
           getHeaders={this.getHeaders}
           changeView={this.changeView}
           view={view}
+          getPropLength={this.getPropLength}
         />
         <main>
           {view === "render" ? (

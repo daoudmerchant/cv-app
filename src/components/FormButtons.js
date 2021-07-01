@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "../styles/FormButtons.css";
 
 export default class FormButtons extends Component {
   render() {
@@ -63,6 +64,7 @@ export default class FormButtons extends Component {
           prevFormButton = (
             <button
               key="previous"
+              className="backbutton"
               onClick={(e) => {
                 changeView("about");
                 e.preventDefault();
@@ -98,6 +100,7 @@ export default class FormButtons extends Component {
         prevFormButton = (
           <button
             key="previous"
+            className="backbutton"
             onClick={(e) => {
               changeView(`${viewType}_${viewNo - 1}`);
               e.preventDefault();
@@ -109,8 +112,8 @@ export default class FormButtons extends Component {
 
     const Buttons = [
       prevFormButton,
-      addNewButton,
       deleteCurrentButton,
+      addNewButton,
       nextFormButton,
     ].filter((button) => button);
     return <div className="buttonContainer">{Buttons}</div>;
