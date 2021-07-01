@@ -21,11 +21,6 @@
   margin-right: auto;
 }
 
-button:only-child {
-  align-content: flex-start;
-  color: green;
-}
-
 button:hover {
   background-color: blue;
   color: white;

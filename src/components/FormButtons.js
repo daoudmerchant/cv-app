@@ -59,6 +59,7 @@ export default class FormButtons extends Component {
 
       if (viewNo === "0") {
         // first of type
+
         if (viewType === "experience") {
           // Experience 1
           prevFormButton = (
@@ -116,6 +117,23 @@ export default class FormButtons extends Component {
       addNewButton,
       nextFormButton,
     ].filter((button) => button);
-    return <div className="buttonContainer">{Buttons}</div>;
+
+    let containerJustify;
+    switch (Buttons.length) {
+      case 1:
+        containerJustify = { justifyContent: "flex-end" };
+        break;
+      case 2:
+        containerJustify = { justifyContent: "space-between" };
+        break;
+      default:
+        containerJustify = { justifyContent: "center" };
+        break;
+    }
+    return (
+      <div className="buttonContainer" style={containerJustify}>
+        {Buttons}
+      </div>
+    );
   }
 }
