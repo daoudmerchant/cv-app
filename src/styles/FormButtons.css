@@ -1,5 +1,5 @@
 .buttonContainer {
-  background-color: salmon;
+  background-color: rgb(199, 237, 255);
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -8,20 +8,28 @@
 .buttonContainer button {
   outline: none;
   cursor: pointer;
-  border: 2px solid blue;
-  border-radius: 20px;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 10px;
   color: blue;
   font-size: larger;
   padding: 1.5rem;
-  background-color: inherit;
+  background-color: rgb(255, 255, 255);
   margin: auto 3rem;
+  transition: all 100ms linear;
 }
 
 .backbutton:first-child {
   margin-right: auto;
 }
 
-button:hover {
-  background-color: blue;
-  color: white;
+.buttonContainer button:hover {
+  border: 2px solid rgb(6, 0, 194);
+  box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.1);
+}
+
+.buttonContainer button:active {
+  border: 2px solid rgb(6, 0, 194);
+  background-color: rgb(6, 0, 194);
+  color: rgb(255, 255, 255);
+  box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.1);
 }

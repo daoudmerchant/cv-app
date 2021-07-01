@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 20vw 1fr;
   height: 100%;
+  box-sizing: border-box;
 }
 
 .App .sidebar,

@@ -3,23 +3,31 @@ form {
   flex-direction: column;
   height: 100%;
   justify-content: space-between;
-  background-color: cornsilk;
+  background-color: rgb(255, 255, 255);
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: rgb(4, 0, 133);
 }
 
 label {
   font-size: 90%;
+  margin-bottom: 0.5rem;
 }
 
 input {
-  border: 1px solid blue;
+  border: 1px solid rgb(0, 0, 0);
   margin-bottom: 1rem;
+  padding: 0.5rem;
+}
+
+input:focus {
+  outline: 2px solid rgb(6, 0, 194);
 }
 
 .inputFields {
   display: flex;
   flex-direction: column;
   padding: 5% 10%;
-}
-
-.inputFields * {
 }
