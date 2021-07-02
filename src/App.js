@@ -14,6 +14,7 @@ export default class App extends Component {
     this.changeView = this.changeView.bind(this);
     this.getPropLength = this.getPropLength.bind(this);
     this.getHeaders = this.getHeaders.bind(this);
+    this.getUserData = this.getUserData.bind(this);
     this.state = {
       about: {
         fullName: "",
@@ -151,6 +152,13 @@ export default class App extends Component {
       })),
     };
   }
+  getUserData() {
+    return {
+      about: this.state.about,
+      experience: this.state.experience,
+      education: this.state.education,
+    };
+  }
   render() {
     const { view } = this.state;
     let stateProp;
@@ -172,7 +180,7 @@ export default class App extends Component {
         />
         <main>
           {view === "render" ? (
-            <RenderCV />
+            <RenderCV getUserData={this.getUserData} />
           ) : (
             <Form
               obj={stateProp}

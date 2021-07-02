@@ -1,0 +1,36 @@
+.cv {
+  padding: 2% 5%;
+}
+
+.cvheader {
+  display: grid;
+  grid-template-areas:
+    "user contact"
+    "profession contact";
+  grid-template-rows: min-content;
+  grid-template-columns: 4fr 1fr;
+}
+
+.cvname {
+  grid-area: user;
+}
+
+.cvprofession {
+  grid-area: profession;
+}
+
+.cvcontact {
+  grid-area: contact;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+table,
+caption {
+  width: 100%;
+}
+
+caption {
+  background-color: grey;
+}
