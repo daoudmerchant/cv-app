@@ -15,45 +15,53 @@ export default function RenderCV(props) {
       </div>
       <table className="cvtable">
         <caption>Experience</caption>
-        {experience.map((item) => {
-          return (
-            <React.Fragment key={item.id}>
-              <tr>
-                <th className="cvdates" scope="row" rowSpan="3">
-                  {item.from}-{item.to}
-                </th>
-                <th className="cvestablishment">{item.establishment}</th>
-              </tr>
-              <tr>
-                <td>{item.position}</td>
-              </tr>
-              <tr>
-                <td>{item.responsibilities}</td>
-              </tr>
-            </React.Fragment>
-          );
-        })}
+        <tbody>
+          {experience.map((item) => {
+            return (
+              <React.Fragment key={item.id}>
+                <tr>
+                  <th className="cvdates" scope="row" rowSpan="3">
+                    {item.from} - {item.to}
+                  </th>
+                  <th className="cvestablishment">{item.establishment}</th>
+                </tr>
+                <tr>
+                  <td className="cvposition">{item.position}</td>
+                </tr>
+                <tr>
+                  <td className="cvresponsibilities">
+                    {item.responsibilities}
+                  </td>
+                </tr>
+              </React.Fragment>
+            );
+          })}
+        </tbody>
       </table>
       <table className="cvtable">
         <caption>Education</caption>
-        {education.map((item) => {
-          return (
-            <React.Fragment key={item.id}>
-              <tr>
-                <th className="cvdates" scope="row" rowSpan="2">
-                  {item.from}-{item.to}
-                </th>
-                <th className="cvestablishment">{item.institution}</th>
-              </tr>
-              <tr>
-                <td>
-                  {item.qualification} -{" "}
-                  <span className="cvsubject">{item.subject}</span>
-                </td>
-              </tr>
-            </React.Fragment>
-          );
-        })}
+        <tbody>
+          {education.map((item) => {
+            return (
+              <React.Fragment key={item.id}>
+                <tr>
+                  <th className="cvdates" scope="row" rowSpan="2">
+                    {item.from} - {item.to}
+                  </th>
+                  <th className="cvinstitution">{item.institution}</th>
+                </tr>
+                <tr>
+                  <td>
+                    <span className="cvqualification">
+                      {item.qualification}
+                    </span>{" "}
+                    - <span className="cvsubject">{item.subject}</span>
+                  </td>
+                </tr>
+              </React.Fragment>
+            );
+          })}
+        </tbody>
       </table>
     </div>
   );

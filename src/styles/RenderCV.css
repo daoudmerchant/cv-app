@@ -13,6 +13,8 @@
 
 .cvname {
   grid-area: user;
+  font-size: 3rem;
+  margin: 0;
 }
 
 .cvprofession {
@@ -31,6 +33,48 @@ caption {
   width: 100%;
 }
 
+th,
+td {
+  padding: 10px;
+}
+
+.cvestablishment,
+.cvinstitution {
+  font-size: 1.5rem;
+  text-decoration: underline;
+}
+
+.cvposition,
+.cvqualification {
+  font-size: 1.3rem;
+}
+
+.cvresponsibilities,
+.cvsubject {
+  font-style: italic;
+}
+
+th {
+  text-align: left;
+}
+
+.cvdates {
+  width: 20%;
+  text-align: right;
+}
+
 caption {
-  background-color: grey;
+  padding: 5px 20px;
+  margin: 15px 0;
+  font-size: 1.2rem;
+  background: rgb(186, 186, 186);
+  background: linear-gradient(
+    90deg,
+    rgba(186, 186, 186, 1) 0%,
+    rgba(186, 186, 186, 1) 25%,
+    rgba(255, 255, 255, 1) 84%
+  );
+  text-align: start;
+  font-weight: bold;
+  color: white;
 }
