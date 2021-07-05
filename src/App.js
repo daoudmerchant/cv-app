@@ -180,7 +180,7 @@ export default class App extends Component {
         />
         <main>
           {view === "render" ? (
-            <RenderCV getUserData={this.getUserData} />
+            <RenderCV user={this.getUserData()} />
           ) : (
             <Form
               obj={stateProp}

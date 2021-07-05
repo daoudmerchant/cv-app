@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# Brief
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+To create a simple CV project using React, relying on class-based components for purposes of state.
 
-## Available Scripts
+## Note
 
-In the project directory, you can run:
+Normally I would have begun with a summary of what I intended, but this was actually an experiment which ended up becoming my final version. For _usability_, my first version involved a 'double-click to edit' CV in which the 'rendered' version was editable. However, I realised that in terms of _accessibility_ it would probably be very bad practice to have form elements toggling between `<p>` and `<input>` for those using assistive browsing. Also, the ability to tab through a form would be missing, essential for assistive technologies.
 
-### `npm start`
+On the other hand, looking at some other student examples, I felt that the format of the form was very overwhelming - one big form, able to add places of study and employment indefinitely, creating a long and intimidating form which could be full of holes and require endless scrolling and rechecking. As such, I made two core decisions:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. To break the form down in to individual sections submitted when advancing to the next section, and
+2. A basic check which **only allows advancement to the next page of the form if all fields are filled**.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+As such, the form could be approached in stages, and the user couldn't end up with 'holes' they have to track down later.
 
-### `npm test`
+## If time was infinite
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+As always, I'm ending the project when I feel that the main 'learning' has taken place, and what's left is polish. Because this exercise took multiple attempts, I'm also aware that the code could do with a lot of neatening, which I may come back and do at a later point. As things stand, I'm too eager to advance and finally learn about React hooks(!)
 
-### `npm run build`
+Things which require more work:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Making the page responsive (currently just a desktop app)
+- Further CV formatting (for a more professional-looking render)
+- Cleaning code
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Features I would have loved to add if this was a final project:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- _About Me_ should contain basic key skills, perhaps selectable from a list, which can render with icons in a sidebar. There could also be a paragraph for a personal statement.
+- I wanted the contact input to be a basic box in to which you could put any contact details, which would then be checked on `onBlur` to determine whether the details were a phone number, email address, website, LinkedIn page etc. and label/render appropriately.
+- The left navigation list was meant to be a set of links to navigate quickly through the form. However, as I was trying to keep to my 2nd decision above that a form page can only be left if it is complete, it would mean that clicking on each side-bar link would force a form submit, something I couldn't work out how to make happen without a DOM query (when I thought that the whole 'spirit' of React is to have separate independent UI modules).
+- The list should also change colour based on which pages were complete, with the currently-displayed page in bold etc.
+- The date fields for education and experience should really be `new Date()`, perhaps with a date input, but I personally dislike when forms force me to input dates with a calendar (navigating back 10 years always feels time consuming, and forcing me to put an exact date when 'September 2004' or even '2004' would be more appropriate). Were this change made, however, it would mean that experiences and education could be rearranged by oldest to most recent, vice versa, by duration etc.
+- Education and experience should be able to be reversed on the CV.
+- Maybe there could be a simple string of buttons on the CV render page allowing a choice of 3-6 basic fonts, or even some basic colour schemes.
 
-### `npm run eject`
+## Questions remaining
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Being my first experience with React, I have many questions I hope will be answered later:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Instead of passing down `this.state` in props, wouldn't it be better (as I tried to do in this exercise) to instead call a function which returns a _new_ object only containing the required properties (increasing immutability of state)?
+- Is there a more efficient way of having the page understand whether there are any unfilled fields than a function which checks all of state for App.js upon every edit?
+- Is it better to style components individually (so that parent components need have no knowledge of what types of HTML elements they contain) or via their parent component's stylesheet (so that the same sub-component can be inserted on different pages with different 'themes' and appear appropriately styled for each)? I ended up doing a bit of both for this project.

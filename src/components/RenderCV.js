@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/RenderCV.css";
 
 export default function RenderCV(props) {
-  const { about, education, experience } = props.getUserData();
+  const { about, education, experience } = props.user;
   return (
     <div className="cv">
       <div className="cvheader">
