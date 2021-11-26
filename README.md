@@ -1,8 +1,10 @@
-# Brief
+# [Live Demo](https://daoudmerchant.github.io/cv-app/)
+
+## Brief
 
 To create a simple CV project using React, relying on class-based components for purposes of state.
 
-## Note
+### Note
 
 Normally I would have begun with a summary of what I intended, but this was actually an experiment which ended up becoming my final version. For _usability_, my first version involved a 'double-click to edit' CV in which the 'rendered' version was editable. However, I realised that in terms of _accessibility_ it would probably be very bad practice to have form elements toggling between `<p>` and `<input>` for those using assistive browsing. Also, the ability to tab through a form would be missing, essential for assistive technologies.
 
@@ -13,7 +15,7 @@ On the other hand, looking at some other student examples, I felt that the forma
 
 As such, the form could be approached in stages, and the user couldn't end up with 'holes' they have to track down later.
 
-## If time was infinite
+### If time was infinite
 
 As always, I'm ending the project when I feel that the main 'learning' has taken place, and what's left is polish. Because this exercise took multiple attempts, I'm also aware that the code could do with a lot of neatening, which I may come back and do at a later point. As things stand, I'm too eager to advance and finally learn about React hooks(!)
 
